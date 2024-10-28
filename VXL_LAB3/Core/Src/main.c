@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "softwareTimer.h"
 #include "button.h"
+#include "traffic_light.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
