@@ -23,4 +23,8 @@
 
 extern int status;
 
+int redDuration;      // Default 5 seconds
+int yellowDuration;   // Default 2 seconds
+int greenDuration;    // Default 3 seconds
+
 #endif /* INC_GLOBAL_H_ */

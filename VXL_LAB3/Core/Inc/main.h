@@ -108,10 +108,6 @@ void Error_Handler(void);
 #define EN0_GPIO_Port GPIOB
 #define EN1_Pin GPIO_PIN_7
 #define EN1_GPIO_Port GPIOB
-#define EN2_Pin GPIO_PIN_8
-#define EN2_GPIO_Port GPIOB
-#define EN3_Pin GPIO_PIN_9
-#define EN3_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

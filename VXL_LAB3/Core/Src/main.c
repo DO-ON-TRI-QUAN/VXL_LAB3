@@ -27,6 +27,7 @@
 #include "traffic_light.h"
 #include "global.h"
 #include "fsm_auto.h"
+#include "display_traffic7seg.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -93,7 +94,7 @@ int main(void)
   MX_TIM2_Init();
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  HAL_TIM_Base_Start_IT (& htim2 ) ;
+  HAL_TIM_Base_Start_IT (&htim2) ;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -101,8 +102,6 @@ int main(void)
   while (1)
   {
 
-    fsmAuto1();
-    //fsmAuto2();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -211,8 +210,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, SEG_21_Pin|SEG_31_Pin|SEG_41_Pin|SEG_51_Pin
-                          |SEG_61_Pin|EN0_Pin|EN1_Pin|EN2_Pin
-                          |EN3_Pin, GPIO_PIN_RESET);
+                          |SEG_61_Pin|EN0_Pin|EN1_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : LED_RED1_Pin LED_YELLOW1_Pin LED_GREEN1_Pin LED_RED2_Pin
                            LED_YELLOW2_Pin LED_GREEN2_Pin SEG_0_Pin SEG_1_Pin
@@ -228,11 +226,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : SEG_21_Pin SEG_31_Pin SEG_41_Pin SEG_51_Pin
-                           SEG_61_Pin EN0_Pin EN1_Pin EN2_Pin
-                           EN3_Pin */
+                           SEG_61_Pin EN0_Pin EN1_Pin */
   GPIO_InitStruct.Pin = SEG_21_Pin|SEG_31_Pin|SEG_41_Pin|SEG_51_Pin
-                          |SEG_61_Pin|EN0_Pin|EN1_Pin|EN2_Pin
-                          |EN3_Pin;
+                          |SEG_61_Pin|EN0_Pin|EN1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

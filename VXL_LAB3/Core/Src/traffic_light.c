@@ -22,6 +22,7 @@ void RED1() {
 }
 
 void RED2() {
+	HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, RESET);
 	HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, SET);
 }
 
@@ -31,6 +32,7 @@ void YELLOW1() {
 }
 
 void YELLOW2() {
+	HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, RESET);
 	HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, SET);
 }
 
@@ -40,6 +42,7 @@ void GREEN1() {
 }
 
 void GREEN2() {
+	HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, RESET);
 	HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, SET);
 }
 

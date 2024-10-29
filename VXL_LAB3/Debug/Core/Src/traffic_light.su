@@ -1,7 +1,7 @@
 traffic_light.c:10:6:trafficLightINIT	8	static
 traffic_light.c:19:6:RED1	8	static
 traffic_light.c:24:6:RED2	8	static
-traffic_light.c:28:6:YELLOW1	8	static
-traffic_light.c:33:6:YELLOW2	8	static
-traffic_light.c:37:6:GREEN1	8	static
-traffic_light.c:42:6:GREEN2	8	static
+traffic_light.c:29:6:YELLOW1	8	static
+traffic_light.c:34:6:YELLOW2	8	static
+traffic_light.c:39:6:GREEN1	8	static
+traffic_light.c:44:6:GREEN2	8	static
