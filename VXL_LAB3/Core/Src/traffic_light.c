@@ -17,6 +17,7 @@ void trafficLightINIT() {
 }
 
 void RED1() {
+	HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, RESET);
 	HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, SET);
 }
 
@@ -25,6 +26,7 @@ void RED2() {
 }
 
 void YELLOW1() {
+	HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, RESET);
 	HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, SET);
 }
 
@@ -33,6 +35,7 @@ void YELLOW2() {
 }
 
 void GREEN1() {
+	HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, RESET);
 	HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, SET);
 }
 

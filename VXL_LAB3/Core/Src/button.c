@@ -13,7 +13,7 @@ int button_longPress_flag[3];
 
 void buttonINIT() {
     for (int i = 0; i < 3; i++) {
-    	KeyReg0[i] = NORMAL_STATE;
+    	KeyReg0[i] = NORMAL_STATE; // Off
     	KeyReg1[i] = NORMAL_STATE;
     	KeyReg2[i] = NORMAL_STATE;
     	KeyReg3[i] = NORMAL_STATE;
