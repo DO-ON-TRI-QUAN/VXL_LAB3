@@ -42,6 +42,7 @@ void updateCurrentTimerValues() {
 }
 
 void fsmAuto() {
+    getMode();
 
 	if (isButtonPressed(0) == 1) {
 		trafficLightINIT();

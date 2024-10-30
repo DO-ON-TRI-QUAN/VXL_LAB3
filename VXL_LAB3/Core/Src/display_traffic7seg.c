@@ -75,15 +75,16 @@ void displayAll7SEG() {
 void LEDdisplayMode () {
 	getMode();
 
-	if (mode == 1) {
-		status1 = INIT;
-		status2 = INIT;
+	if (mode == 3) {
+		trafficLightINIT();
+		status1 = SETTING_YELLOW;
+		status2 = SETTING_YELLOW;
 	}
 
 	switch (status1) {
 	    case SETTING_RED:
 	    	if (timer_flag[4] == 1) {
-	    		setTimer(4, 2000);
+	    		setTimer(4, 500);
 	    	    HAL_GPIO_TogglePin(LED_RED1_GPIO_Port, LED_RED1_Pin);
 	    	    HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, RESET);
 	    	    HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, RESET);
@@ -94,8 +95,8 @@ void LEDdisplayMode () {
 
 	    case SETTING_YELLOW:
 	    	if (timer_flag[4] == 1) {
-	    	    setTimer(4, 2000);
-	    	    YELLOW1();
+	    	    setTimer(4, 500);
+	    	    HAL_GPIO_TogglePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin);
 	        	HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, RESET);
 	    	    HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, RESET);
 	         	HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, RESET);
@@ -106,8 +107,8 @@ void LEDdisplayMode () {
 
 	    case SETTING_GREEN:
 	    	if (timer_flag[4] == 1) {
-	    		setTimer(4, 2000);
-	    		GREEN1();
+	    		setTimer(4, 500);
+	    	    HAL_GPIO_TogglePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin);
 	    		HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, RESET);
 	    		HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, RESET);
 	    		HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_GREEN1_Pin, RESET);
@@ -119,9 +120,9 @@ void LEDdisplayMode () {
 
 	switch (status2) {
 		 case SETTING_RED:
-		    if (timer_flag[4] == 1) {
-		    	setTimer(4, 2000);
-		        RED2();
+		    if (timer_flag[5] == 1) {
+		    	setTimer(5, 500);
+	    	    HAL_GPIO_TogglePin(LED_RED2_GPIO_Port, LED_RED2_Pin);
 		        HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, RESET);
 		    	HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, RESET);
 		    	HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, RESET);
@@ -131,9 +132,9 @@ void LEDdisplayMode () {
 		    break;
 
 		 case SETTING_YELLOW:
-		    if (timer_flag[4] == 1) {
-		    	setTimer(4, 2000);
-		    	YELLOW2();
+		    if (timer_flag[5] == 1) {
+		    	setTimer(5, 500);
+	    	    HAL_GPIO_TogglePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin);
 		        HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, RESET);
 		    	HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, RESET);
 		        HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, RESET);
@@ -143,9 +144,9 @@ void LEDdisplayMode () {
 		    break;
 
 		 case SETTING_GREEN:
-		    if (timer_flag[4] == 1) {
-		    	setTimer(4, 2000);
-		    	GREEN2();
+		    if (timer_flag[5] == 1) {
+		    	setTimer(5, 500);
+	    	    HAL_GPIO_TogglePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin);
 		    	HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, RESET);
 		    	HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, RESET);
 		    	HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_GREEN1_Pin, RESET);
