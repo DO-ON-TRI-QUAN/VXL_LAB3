@@ -21,7 +21,8 @@
 #define SETTING_YELLOW   11
 #define SETTING_GREEN    12
 
-extern int status;
+extern int status1;
+extern int status2;
 
 int redDuration;      // Default 5 seconds
 int yellowDuration;   // Default 2 seconds

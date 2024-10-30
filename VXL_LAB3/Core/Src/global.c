@@ -7,7 +7,8 @@
 
 #include "global.h"
 
-int status = INIT;
+int status1 = INIT;
+int status2 = INIT;
 
 int redDuration = 5000;      // Default 5 seconds
 int yellowDuration = 2000;   // Default 2 seconds

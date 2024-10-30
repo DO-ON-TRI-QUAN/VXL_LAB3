@@ -10,8 +10,6 @@
 #include "softwareTimer.h"
 
 int turn = 0;
-int SEGvalue1 = 0;
-int SEGvalue2 = 0;
 
 void display7SEG(int tenInt, int unitInt)
 {
@@ -54,29 +52,21 @@ void display7SEG(int tenInt, int unitInt)
 
 
 void displayAll7SEG() {
-	// Turn off all 7seg LEDS initially
-	HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, RESET);
-	HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, RESET);
+	if (timer_flag[3] == 1) {
+		setTimer(3, 500);
+		turn = !turn;
+	}
 
-	// Each pairs will take turn to display
+	// Toggle the displayed segment
 	if (turn == 0) {
-		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
+	    HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
 	    HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, RESET);
 	    display7SEG(SEGvalue1 / 10, SEGvalue1 % 10);
 	} else {
-		HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, RESET);
+	    HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, RESET);
 	    HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
 	    display7SEG(SEGvalue2 / 10, SEGvalue2 % 10);
 	}
-
-	turn = !turn;
 }
 
-
-void updateAll7SEG() {
-	if (timer_flag[3] == 1) {
-		setTimer(3, 500);
-        displayAll7SEG();
-	}
-}
 
