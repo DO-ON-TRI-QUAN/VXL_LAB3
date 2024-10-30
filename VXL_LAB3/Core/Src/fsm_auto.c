@@ -10,6 +10,7 @@
 #include "traffic_light.h"
 #include "softwareTimer.h"
 #include "display_traffic7seg.h"
+#include "button.h"
 
 void updateCurrentTimerValues() {
 
@@ -41,6 +42,15 @@ void updateCurrentTimerValues() {
 }
 
 void fsmAuto() {
+
+	if (isButtonPressed(0) == 1) {
+		trafficLightINIT();
+		status1 = SETTING_RED;
+		status2 = SETTING_RED;
+	}
+
+	LEDdisplayMode();
+
 	// Update the timer values before each FSM cycle
 	 updateCurrentTimerValues();
 

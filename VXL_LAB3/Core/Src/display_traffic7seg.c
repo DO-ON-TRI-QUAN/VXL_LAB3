@@ -8,6 +8,9 @@
 #include "display_traffic7seg.h"
 #include "global.h"
 #include "softwareTimer.h"
+#include "traffic_light.h"
+#include "button.h"
+#include "fsm_auto.h"
 
 int turn = 0;
 
@@ -68,5 +71,140 @@ void displayAll7SEG() {
 	    display7SEG(SEGvalue2 / 10, SEGvalue2 % 10);
 	}
 }
+
+void LEDdisplayMode () {
+	getMode();
+
+	if (mode == 1) {
+		status1 = INIT;
+		status2 = INIT;
+	}
+
+	switch (status1) {
+	    case SETTING_RED:
+	    	if (timer_flag[4] == 1) {
+	    		setTimer(4, 2000);
+	    	    HAL_GPIO_TogglePin(LED_RED1_GPIO_Port, LED_RED1_Pin);
+	    	    HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, RESET);
+	    	    HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, RESET);
+	    	    HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, RESET);
+	    	    HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, RESET);
+	    	}
+	    	    break;
+
+	    case SETTING_YELLOW:
+	    	if (timer_flag[4] == 1) {
+	    	    setTimer(4, 2000);
+	    	    YELLOW1();
+	        	HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, RESET);
+	    	    HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, RESET);
+	         	HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, RESET);
+	    	    HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, RESET);
+	    	}
+
+	    	break;
+
+	    case SETTING_GREEN:
+	    	if (timer_flag[4] == 1) {
+	    		setTimer(4, 2000);
+	    		GREEN1();
+	    		HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, RESET);
+	    		HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, RESET);
+	    		HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_GREEN1_Pin, RESET);
+	    	    HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_GREEN2_Pin, RESET);
+	    	}
+
+	    	break;
+	}
+
+	switch (status2) {
+		 case SETTING_RED:
+		    if (timer_flag[4] == 1) {
+		    	setTimer(4, 2000);
+		        RED2();
+		        HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_YELLOW1_Pin, RESET);
+		    	HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_YELLOW2_Pin, RESET);
+		    	HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, RESET);
+		    	HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, RESET);
+		    }
+
+		    break;
+
+		 case SETTING_YELLOW:
+		    if (timer_flag[4] == 1) {
+		    	setTimer(4, 2000);
+		    	YELLOW2();
+		        HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, RESET);
+		    	HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, RESET);
+		        HAL_GPIO_WritePin(LED_GREEN1_GPIO_Port, LED_GREEN1_Pin, RESET);
+		    	HAL_GPIO_WritePin(LED_GREEN2_GPIO_Port, LED_GREEN2_Pin, RESET);
+		    }
+
+		    break;
+
+		 case SETTING_GREEN:
+		    if (timer_flag[4] == 1) {
+		    	setTimer(4, 2000);
+		    	GREEN2();
+		    	HAL_GPIO_WritePin(LED_RED1_GPIO_Port, LED_RED1_Pin, RESET);
+		    	HAL_GPIO_WritePin(LED_RED2_GPIO_Port, LED_RED2_Pin, RESET);
+		    	HAL_GPIO_WritePin(LED_YELLOW1_GPIO_Port, LED_GREEN1_Pin, RESET);
+		    	HAL_GPIO_WritePin(LED_YELLOW2_GPIO_Port, LED_GREEN2_Pin, RESET);
+		    }
+
+		    break;
+	}
+}
+
+int getMode() {
+	if (isButtonPressed(0) == 1) {
+		mode++;
+		if (mode > 4) {
+			mode = 1;
+		}
+	}
+
+	return mode;
+}
+
+void fsmSetting() {
+	getMode();
+
+	switch (mode) {
+	    case 2:
+	    	if (isButtonPressed(1) == 1) {
+	    		redIncreaseValue = redDuration;
+	    		redIncreaseValue = redIncreaseValue + 1000;
+	    		if (redIncreaseValue > 99000) {
+	    			redIncreaseValue = 0;
+	    		}
+	    	}
+
+	    	break;
+
+	    case 3:
+	    	if (isButtonPressed(1) == 1) {
+	    		yellowIncreaseValue = yellowDuration;
+	    		yellowIncreaseValue = yellowIncreaseValue + 1000;
+	    		if (yellowIncreaseValue > 99000) {
+	    		    yellowIncreaseValue = 0;
+	    		}
+	        }
+
+	    	break;
+
+	    case 4:
+	    	 if (isButtonPressed(1) == 1) {
+	    	     greenIncreaseValue = greenDuration;
+	    	     greenIncreaseValue = greenIncreaseValue + 1000;
+	    	     if (greenIncreaseValue > 99000) {
+	    	         greenIncreaseValue = 0;
+	    	     }
+	    	 }
+
+	    	  break;
+	}
+}
+
 
 

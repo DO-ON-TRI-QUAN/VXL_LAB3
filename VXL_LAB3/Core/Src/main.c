@@ -100,10 +100,11 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   setTimer(3, 500);
+  setTimer(4, 200);
   while (1)
   {
 
-   //fsmAuto();
+   fsmAuto();
 
     }
     /* USER CODE END WHILE */
