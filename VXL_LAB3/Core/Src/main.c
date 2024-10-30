@@ -99,13 +99,21 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  setTimer(3, 500); // For 7SED display
   while (1)
   {
 
+    updateAll7SEG();
+
+    fsmAuto();
+
+    }
+	  //displayAll7SEG();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-  }
+	HAL_Delay(10);
+
   /* USER CODE END 3 */
 }
 

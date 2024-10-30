@@ -19,4 +19,6 @@ void setTimer(int index, int counter);
 
 void timer_run();
 
+int getRemainingTime(int index);
+
 #endif /* INC_SOFTWARETIMER_H_ */

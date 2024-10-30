@@ -22,3 +22,7 @@ void timer_run() {
 		}
 	}
 }
+
+int getRemainingTime(int index) {
+    return timer_counter[index] * TICK; // Convert back to actual time
+}

@@ -27,4 +27,8 @@ int redDuration;      // Default 5 seconds
 int yellowDuration;   // Default 2 seconds
 int greenDuration;    // Default 3 seconds
 
+
+extern int current_timer_value1; // Holds the remaining time for Pair 1
+extern int current_timer_value2; // Holds the remaining time for Pair 2
+
 #endif /* INC_GLOBAL_H_ */

@@ -1,2 +1,3 @@
 softwareTimer.c:10:6:setTimer	16	static
 softwareTimer.c:15:6:timer_run	16	static
+softwareTimer.c:26:5:getRemainingTime	16	static
