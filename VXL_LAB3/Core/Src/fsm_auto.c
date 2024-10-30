@@ -83,8 +83,6 @@ void fsmAuto() {
     }
 
 
-    //SEGvalue2 = (getRemainingTime(1) / 1000);  // For Pair 2
-
     // FSM for Pair 2
     switch (status2) {
     	case INIT:

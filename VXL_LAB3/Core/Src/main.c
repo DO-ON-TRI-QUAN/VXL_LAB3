@@ -103,7 +103,7 @@ int main(void)
   while (1)
   {
 
-    fsmAuto();
+   //fsmAuto();
 
     }
     /* USER CODE END WHILE */
