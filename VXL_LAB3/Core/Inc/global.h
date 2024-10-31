@@ -25,6 +25,7 @@ extern int status1;
 extern int status2;
 
 int mode;
+int previousMode;
 
 int redDuration;      // Default 5 seconds
 int yellowDuration;   // Default 2 seconds
@@ -36,5 +37,7 @@ int greenIncreaseValue;
 
 extern int current_timer_value1; // Holds the remaining time for Pair 1
 extern int current_timer_value2; // Holds the remaining time for Pair 2
+
+void getMode();
 
 #endif /* INC_GLOBAL_H_ */

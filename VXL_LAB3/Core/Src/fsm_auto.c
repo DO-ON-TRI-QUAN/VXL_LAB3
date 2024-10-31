@@ -42,15 +42,11 @@ void updateCurrentTimerValues() {
 }
 
 void fsmAuto() {
-    getMode();
-
-	if (isButtonPressed(0) == 1) {
-		trafficLightINIT();
-		status1 = SETTING_RED;
-		status2 = SETTING_RED;
-	}
-
-	LEDdisplayMode();
+     if (mode > 1) {
+    	 status1 = SETTING_RED;
+    	 status2 = SETTING_RED;
+    	 return;
+     }
 
 	// Update the timer values before each FSM cycle
 	 updateCurrentTimerValues();

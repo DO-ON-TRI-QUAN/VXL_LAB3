@@ -1,5 +1,2 @@
 display_traffic7seg.c:17:6:display7SEG	72	static
 display_traffic7seg.c:57:6:displayAll7SEG	8	static
-display_traffic7seg.c:75:6:LEDdisplayMode	8	static
-display_traffic7seg.c:160:5:getMode	8	static
-display_traffic7seg.c:171:6:fsmSetting	8	static

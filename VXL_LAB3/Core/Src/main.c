@@ -27,6 +27,7 @@
 #include "traffic_light.h"
 #include "global.h"
 #include "fsm_auto.h"
+#include "fsm_setting.h"
 #include "display_traffic7seg.h"
 /* USER CODE END Includes */
 
@@ -99,13 +100,16 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer(3, 500);
-  setTimer(4, 200);
-  setTimer(5, 200);
+  setTimer(3, 500); // For 7seg display
+  setTimer(4, 500); // For mode 2, 3, 4
   while (1)
   {
 
+   getMode();
+
    fsmAuto();
+
+   fsmSetting();
 
     }
     /* USER CODE END WHILE */

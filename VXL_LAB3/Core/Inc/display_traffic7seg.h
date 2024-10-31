@@ -16,10 +16,5 @@ int SEGvalue2;
 
 void display7SEG(int tenInt, int unitInt);
 void displayAll7SEG();
-void LEDdisplayMode();
-int getMode();
-void fsmSetting();
-
-
 
 #endif /* INC_DISPLAY_TRAFFIC7SEG_H_ */
