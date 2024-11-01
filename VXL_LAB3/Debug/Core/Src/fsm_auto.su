@@ -1,2 +1,1 @@
-fsm_auto.c:15:6:updateCurrentTimerValues	8	static
-fsm_auto.c:44:6:fsmAuto	8	static
+fsm_auto.c:15:6:fsmAuto	8	static

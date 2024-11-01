@@ -14,12 +14,12 @@
 #include "fsm_auto.h"
 
 void fsmSetting() {
-	if (previousMode == 4 && mode == 1) {
-		status1 = INIT;
+	if (mode == 1 && previousMode == 4) {
 		return;
-	}
+	} else {
 
-    displayAll7SEG(); // Scanning display for both pairs
+
+    //displayAll7SEG(); // Scanning display for both pairs
 
     switch (mode) {
         case 2: // Mode 2 - Modify Red LED duration
@@ -34,12 +34,12 @@ void fsmSetting() {
                 redDuration += redIncreaseValue;
                 if (redDuration > 99000) redDuration = 1000;
                 redIncreaseValue = 0; // Reset the increase value after saving
-            } else {
-            	redIncreaseValue = 0; //
             }
+
             // Display updated red duration on the 7-segment display
             SEGvalue1 = (redDuration + redIncreaseValue) / 1000;
-            SEGvalue2 = (redDuration + redIncreaseValue) % 1000;
+            SEGvalue2 = mode;
+            displayAll7SEG();
             break;
 
         case 3: // Mode 3 - Modify Yellow LED duration
@@ -49,15 +49,14 @@ void fsmSetting() {
                 if (yellowIncreaseValue + yellowDuration > 99000) yellowIncreaseValue = 1000 - yellowDuration;
             }
             if (isButtonPressed(2)) {
-                yellowDuration = yellowIncreaseValue;
+                yellowDuration += yellowIncreaseValue;
                 if (yellowDuration > 99000) yellowDuration = 1000;
                 yellowIncreaseValue = 0;
-            } else {
-            	yellowIncreaseValue = 0; //
             }
 
             SEGvalue1 = (yellowDuration + yellowIncreaseValue) / 1000;
-            SEGvalue2 = (yellowDuration + yellowIncreaseValue) % 1000;
+            SEGvalue2 = mode;
+            displayAll7SEG();
             break;
 
         case 4: // Mode 4 - Modify Green LED duration
@@ -70,12 +69,12 @@ void fsmSetting() {
                 greenDuration += greenIncreaseValue;
                 if (greenDuration > 99000) greenDuration = 1000;
                 greenIncreaseValue = 0;
-            } else {
-            	greenIncreaseValue = 0; //
             }
 
             SEGvalue1 = (greenDuration + greenIncreaseValue) / 1000;
-            SEGvalue2 = (greenDuration + greenIncreaseValue) % 1000;
+            SEGvalue2 = mode;
+            displayAll7SEG();
             break;
+    }
     }
 }
