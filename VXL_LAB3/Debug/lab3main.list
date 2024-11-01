@@ -1360,7 +1360,7 @@ int main(void)
  80009fa:	f44f 71fa 	mov.w	r1, #500	; 0x1f4
  80009fe:	2003      	movs	r0, #3
  8000a00:	f000 f90a 	bl	8000c18 <setTimer>
-  setTimer(4, 500); // For mode 2, 3, 4
+  setTimer(4, 500); // For mode 2, 3 and 4
  8000a04:	f44f 71fa 	mov.w	r1, #500	; 0x1f4
  8000a08:	2004      	movs	r0, #4
  8000a0a:	f000 f905 	bl	8000c18 <setTimer>

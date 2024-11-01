@@ -101,7 +101,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   setTimer(3, 500); // For 7seg display
-  setTimer(4, 500); // For mode 2, 3, 4
+  setTimer(4, 500); // For mode 2, 3 and 4
   while (1)
   {
 
