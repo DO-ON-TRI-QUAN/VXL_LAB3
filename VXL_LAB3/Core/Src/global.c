@@ -29,11 +29,12 @@ void getMode() {
 	    	trafficLightINIT();
 	    	status1 = INIT;
 	    	status2 = INIT;
-	    	SEGvalue1 = 0;
-	    	SEGvalue2 = 0;
-	    	timer_counter[0] = 0;
-	    	timer_counter[1] = 0;
-            setTimer(3, 500);
+	    	redIncreaseValue = 0;
+	    	yellowIncreaseValue = 0;
+	    	greenIncreaseValue = 0;
+            turn = 0;
+
+            setTimer(3, 500); // Set timer again for 7SEG display to sync with current mode
 
 	    	mode = 1; // Loop back to Mode 1
 	    }
