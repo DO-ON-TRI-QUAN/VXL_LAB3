@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000029  00000000  00000000  00020024  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00009bd5  00000000  00000000  0002004d  2**0
+ 12 .debug_info   00009b5d  00000000  00000000  0002004d  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00001c7b  00000000  00000000  00029c22  2**0
+ 13 .debug_abbrev 00001c7b  00000000  00000000  00029baa  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00000a88  00000000  00000000  0002b8a0  2**3
+ 14 .debug_aranges 00000a88  00000000  00000000  0002b828  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 00000970  00000000  00000000  0002c328  2**3
+ 15 .debug_ranges 00000970  00000000  00000000  0002c2b0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00017094  00000000  00000000  0002cc98  2**0
+ 16 .debug_macro  00017082  00000000  00000000  0002cc20  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000c6df  00000000  00000000  00043d2c  2**0
+ 17 .debug_line   0000c6df  00000000  00000000  00043ca2  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    000825f8  00000000  00000000  0005040b  2**0
+ 18 .debug_str    0008259c  00000000  00000000  00050381  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000053  00000000  00000000  000d2a03  2**0
+ 19 .comment      00000053  00000000  00000000  000d291d  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000028f8  00000000  00000000  000d2a58  2**2
+ 20 .debug_frame  000028f8  00000000  00000000  000d2970  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -490,7 +490,7 @@ void display7SEG(int tenInt, int unitInt)
 08000470 <displayAll7SEG>:
 
 
-void displayAll7SEG() { // For displaying mode 1
+void displayAll7SEG() {
  8000470:	b580      	push	{r7, lr}
  8000472:	af00      	add	r7, sp, #0
 	if (timer_flag[3] == 1) { // Timer is set on main function
@@ -1011,7 +1011,6 @@ void fsmSetting() {
  80007d4:	681b      	ldr	r3, [r3, #0]
  80007d6:	4a59      	ldr	r2, [pc, #356]	; (800093c <fsmSetting+0x230>)
  80007d8:	6013      	str	r3, [r2, #0]
-            	//displayAll7SEG();
 
             	break;
  80007da:	e09c      	b.n	8000916 <fsmSetting+0x20a>
@@ -1108,7 +1107,6 @@ void fsmSetting() {
  8000870:	681b      	ldr	r3, [r3, #0]
  8000872:	4a32      	ldr	r2, [pc, #200]	; (800093c <fsmSetting+0x230>)
  8000874:	6013      	str	r3, [r2, #0]
-         	 // displayAll7SEG();
 
          	  break;
  8000876:	e04e      	b.n	8000916 <fsmSetting+0x20a>
@@ -1205,7 +1203,6 @@ void fsmSetting() {
  800090c:	681b      	ldr	r3, [r3, #0]
  800090e:	4a0b      	ldr	r2, [pc, #44]	; (800093c <fsmSetting+0x230>)
  8000910:	6013      	str	r3, [r2, #0]
-            	//displayAll7SEG();
 
             	break;
  8000912:	e000      	b.n	8000916 <fsmSetting+0x20a>
@@ -1237,36 +1234,36 @@ int greenDuration = 3000;    // Default 3 seconds
 void getMode() {
  8000948:	b580      	push	{r7, lr}
  800094a:	af00      	add	r7, sp, #0
-	if (isButtonPressed(0)) { // Assuming Button 1 is index 0
+	if (isButtonPressed(0)) {
  800094c:	2000      	movs	r0, #0
  800094e:	f7ff fbfd 	bl	800014c <isButtonPressed>
  8000952:	4603      	mov	r3, r0
  8000954:	2b00      	cmp	r3, #0
  8000956:	d030      	beq.n	80009ba <getMode+0x72>
+		trafficLightINIT();
+ 8000958:	f000 fa50 	bl	8000dfc <trafficLightINIT>
 	    mode++;
- 8000958:	4b19      	ldr	r3, [pc, #100]	; (80009c0 <getMode+0x78>)
- 800095a:	681b      	ldr	r3, [r3, #0]
- 800095c:	3301      	adds	r3, #1
- 800095e:	4a18      	ldr	r2, [pc, #96]	; (80009c0 <getMode+0x78>)
- 8000960:	6013      	str	r3, [r2, #0]
+ 800095c:	4b18      	ldr	r3, [pc, #96]	; (80009c0 <getMode+0x78>)
+ 800095e:	681b      	ldr	r3, [r3, #0]
+ 8000960:	3301      	adds	r3, #1
+ 8000962:	4a17      	ldr	r2, [pc, #92]	; (80009c0 <getMode+0x78>)
+ 8000964:	6013      	str	r3, [r2, #0]
 	    previousMode = (mode - 1) % 4;
- 8000962:	4b17      	ldr	r3, [pc, #92]	; (80009c0 <getMode+0x78>)
- 8000964:	681b      	ldr	r3, [r3, #0]
- 8000966:	3b01      	subs	r3, #1
- 8000968:	425a      	negs	r2, r3
- 800096a:	f003 0303 	and.w	r3, r3, #3
- 800096e:	f002 0203 	and.w	r2, r2, #3
- 8000972:	bf58      	it	pl
- 8000974:	4253      	negpl	r3, r2
- 8000976:	4a13      	ldr	r2, [pc, #76]	; (80009c4 <getMode+0x7c>)
- 8000978:	6013      	str	r3, [r2, #0]
+ 8000966:	4b16      	ldr	r3, [pc, #88]	; (80009c0 <getMode+0x78>)
+ 8000968:	681b      	ldr	r3, [r3, #0]
+ 800096a:	3b01      	subs	r3, #1
+ 800096c:	425a      	negs	r2, r3
+ 800096e:	f003 0303 	and.w	r3, r3, #3
+ 8000972:	f002 0203 	and.w	r2, r2, #3
+ 8000976:	bf58      	it	pl
+ 8000978:	4253      	negpl	r3, r2
+ 800097a:	4a12      	ldr	r2, [pc, #72]	; (80009c4 <getMode+0x7c>)
+ 800097c:	6013      	str	r3, [r2, #0]
 	    if (mode > 4) {
- 800097a:	4b11      	ldr	r3, [pc, #68]	; (80009c0 <getMode+0x78>)
- 800097c:	681b      	ldr	r3, [r3, #0]
- 800097e:	2b04      	cmp	r3, #4
- 8000980:	dd1b      	ble.n	80009ba <getMode+0x72>
-	    	trafficLightINIT();
- 8000982:	f000 fa3b 	bl	8000dfc <trafficLightINIT>
+ 800097e:	4b10      	ldr	r3, [pc, #64]	; (80009c0 <getMode+0x78>)
+ 8000980:	681b      	ldr	r3, [r3, #0]
+ 8000982:	2b04      	cmp	r3, #4
+ 8000984:	dd19      	ble.n	80009ba <getMode+0x72>
 	    	status1 = INIT;
  8000986:	4b10      	ldr	r3, [pc, #64]	; (80009c8 <getMode+0x80>)
  8000988:	2201      	movs	r2, #1

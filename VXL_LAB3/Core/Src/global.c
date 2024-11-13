@@ -22,11 +22,11 @@ int yellowDuration = 2000;   // Default 2 seconds
 int greenDuration = 3000;    // Default 3 seconds
 
 void getMode() {
-	if (isButtonPressed(0)) { // Assuming Button 1 is index 0
+	if (isButtonPressed(0)) {
+		trafficLightINIT();
 	    mode++;
 	    previousMode = (mode - 1) % 4;
 	    if (mode > 4) {
-	    	trafficLightINIT();
 	    	status1 = INIT;
 	    	status2 = INIT;
 	    	redIncreaseValue = 0;

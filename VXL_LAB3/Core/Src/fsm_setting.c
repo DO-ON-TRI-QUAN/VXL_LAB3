@@ -44,7 +44,6 @@ void fsmSetting() {
             	// Display updated red duration on the 7-segment display
             	SEGvalue1 = (redDuration + redIncreaseValue) / 1000;
             	SEGvalue2 = mode;
-            	//displayAll7SEG();
 
             	break;
 
@@ -70,7 +69,6 @@ void fsmSetting() {
 
          	  SEGvalue1 = (yellowDuration + yellowIncreaseValue) / 1000;
          	  SEGvalue2 = mode;
-         	 // displayAll7SEG();
 
          	  break;
 
@@ -96,7 +94,6 @@ void fsmSetting() {
 
             	SEGvalue1 = (greenDuration + greenIncreaseValue) / 1000;
             	SEGvalue2 = mode;
-            	//displayAll7SEG();
 
             	break;
         }

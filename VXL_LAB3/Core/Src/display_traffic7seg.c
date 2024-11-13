@@ -54,7 +54,7 @@ void display7SEG(int tenInt, int unitInt)
 }
 
 
-void displayAll7SEG() { // For displaying mode 1
+void displayAll7SEG() {
 	if (timer_flag[3] == 1) { // Timer is set on main function
 		setTimer(3, 500);
 		turn = !turn;
