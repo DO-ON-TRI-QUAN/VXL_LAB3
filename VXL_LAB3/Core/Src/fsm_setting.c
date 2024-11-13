@@ -28,7 +28,6 @@ void fsmSetting() {
             		if (redIncreaseValue + redDuration > 99000) {
             			redIncreaseValue = 1000 - redDuration;
             		}
-
             	}
 
             	if (isButtonPressed(2)) {

@@ -941,7 +941,6 @@ void fsmSetting() {
  8000764:	4a6a      	ldr	r2, [pc, #424]	; (8000910 <fsmSetting+0x214>)
  8000766:	6013      	str	r3, [r2, #0]
             		}
-
             	}
 
             	if (isButtonPressed(2)) {
