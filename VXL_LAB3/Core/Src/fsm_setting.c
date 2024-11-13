@@ -24,7 +24,7 @@ void fsmSetting() {
             	RedBlinky();
 
             	// Increase red value everytime button 1 is pressed
-            	if (isButtonPressed(1)) {
+            	if (isButtonPressed(1) == 1) {
             		redIncreaseValue = redIncreaseValue + 1000;
             		if (redIncreaseValue + redDuration > 99000) {
             			redIncreaseValue = 1000 - redDuration;
@@ -32,7 +32,7 @@ void fsmSetting() {
             	}
 
             	// Update new red value if button 2 is pressed
-            	if (isButtonPressed(2)) {
+            	if (isButtonPressed(2) == 1) {
             		redDuration = redDuration + redIncreaseValue;
             		greenDuration = redDuration - yellowDuration; // Increases green when red increases
             		if (redDuration > 99000) {
@@ -51,14 +51,14 @@ void fsmSetting() {
             case 3:
             	YellowBlinky();
 
-            	if (isButtonPressed(1)) {
+            	if (isButtonPressed(1) == 1) {
             		yellowIncreaseValue = yellowIncreaseValue + 1000;
             		if (yellowIncreaseValue + yellowDuration > 99000) {
             			yellowIncreaseValue = 1000 - yellowDuration;
             		}
             	}
 
-            	if (isButtonPressed(2)) {
+            	if (isButtonPressed(2) == 1) {
             	    yellowDuration += yellowIncreaseValue;
             	    redDuration = yellowDuration + greenDuration; // Increases red when yellow increases
             		if (yellowDuration > 99000) {
@@ -76,14 +76,14 @@ void fsmSetting() {
             case 4:
             	GreenBlinky();
 
-            	if (isButtonPressed(1)) {
+            	if (isButtonPressed(1) == 1) {
             		greenIncreaseValue = greenIncreaseValue + 1000;
             		if (greenIncreaseValue + greenDuration > 99000) {
             			greenIncreaseValue = 1000 - greenDuration;
             		}
             	}
 
-            	if (isButtonPressed(2)) {
+            	if (isButtonPressed(2) == 1) {
             		greenDuration += greenIncreaseValue;
             	    redDuration = yellowDuration + greenDuration; // Increases red when green increases
             		if (greenDuration > 99000) {

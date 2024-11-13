@@ -914,12 +914,12 @@ void fsmSetting() {
  8000730:	f000 fbe0 	bl	8000ef4 <RedBlinky>
 
             	// Increase red value everytime button 1 is pressed
-            	if (isButtonPressed(1)) {
+            	if (isButtonPressed(1) == 1) {
  8000734:	2001      	movs	r0, #1
  8000736:	f7ff fd09 	bl	800014c <isButtonPressed>
  800073a:	4603      	mov	r3, r0
- 800073c:	2b00      	cmp	r3, #0
- 800073e:	d013      	beq.n	8000768 <fsmSetting+0x6c>
+ 800073c:	2b01      	cmp	r3, #1
+ 800073e:	d113      	bne.n	8000768 <fsmSetting+0x6c>
             		redIncreaseValue = redIncreaseValue + 1000;
  8000740:	4b73      	ldr	r3, [pc, #460]	; (8000910 <fsmSetting+0x214>)
  8000742:	681b      	ldr	r3, [r3, #0]
@@ -945,12 +945,12 @@ void fsmSetting() {
             	}
 
             	// Update new red value if button 2 is pressed
-            	if (isButtonPressed(2)) {
+            	if (isButtonPressed(2) == 1) {
  8000768:	2002      	movs	r0, #2
  800076a:	f7ff fcef 	bl	800014c <isButtonPressed>
  800076e:	4603      	mov	r3, r0
- 8000770:	2b00      	cmp	r3, #0
- 8000772:	d019      	beq.n	80007a8 <fsmSetting+0xac>
+ 8000770:	2b01      	cmp	r3, #1
+ 8000772:	d119      	bne.n	80007a8 <fsmSetting+0xac>
             		redDuration = redDuration + redIncreaseValue;
  8000774:	4b67      	ldr	r3, [pc, #412]	; (8000914 <fsmSetting+0x218>)
  8000776:	681a      	ldr	r2, [r3, #0]
@@ -1012,12 +1012,12 @@ void fsmSetting() {
             	YellowBlinky();
  80007cc:	f000 fbc0 	bl	8000f50 <YellowBlinky>
 
-            	if (isButtonPressed(1)) {
+            	if (isButtonPressed(1) == 1) {
  80007d0:	2001      	movs	r0, #1
  80007d2:	f7ff fcbb 	bl	800014c <isButtonPressed>
  80007d6:	4603      	mov	r3, r0
- 80007d8:	2b00      	cmp	r3, #0
- 80007da:	d013      	beq.n	8000804 <fsmSetting+0x108>
+ 80007d8:	2b01      	cmp	r3, #1
+ 80007da:	d113      	bne.n	8000804 <fsmSetting+0x108>
             		yellowIncreaseValue = yellowIncreaseValue + 1000;
  80007dc:	4b54      	ldr	r3, [pc, #336]	; (8000930 <fsmSetting+0x234>)
  80007de:	681b      	ldr	r3, [r3, #0]
@@ -1042,12 +1042,12 @@ void fsmSetting() {
             		}
             	}
 
-            	if (isButtonPressed(2)) {
+            	if (isButtonPressed(2) == 1) {
  8000804:	2002      	movs	r0, #2
  8000806:	f7ff fca1 	bl	800014c <isButtonPressed>
  800080a:	4603      	mov	r3, r0
- 800080c:	2b00      	cmp	r3, #0
- 800080e:	d019      	beq.n	8000844 <fsmSetting+0x148>
+ 800080c:	2b01      	cmp	r3, #1
+ 800080e:	d119      	bne.n	8000844 <fsmSetting+0x148>
             	    yellowDuration += yellowIncreaseValue;
  8000810:	4b42      	ldr	r3, [pc, #264]	; (800091c <fsmSetting+0x220>)
  8000812:	681a      	ldr	r2, [r3, #0]
@@ -1108,12 +1108,12 @@ void fsmSetting() {
             	GreenBlinky();
  8000868:	f000 fba0 	bl	8000fac <GreenBlinky>
 
-            	if (isButtonPressed(1)) {
+            	if (isButtonPressed(1) == 1) {
  800086c:	2001      	movs	r0, #1
  800086e:	f7ff fc6d 	bl	800014c <isButtonPressed>
  8000872:	4603      	mov	r3, r0
- 8000874:	2b00      	cmp	r3, #0
- 8000876:	d013      	beq.n	80008a0 <fsmSetting+0x1a4>
+ 8000874:	2b01      	cmp	r3, #1
+ 8000876:	d113      	bne.n	80008a0 <fsmSetting+0x1a4>
             		greenIncreaseValue = greenIncreaseValue + 1000;
  8000878:	4b2e      	ldr	r3, [pc, #184]	; (8000934 <fsmSetting+0x238>)
  800087a:	681b      	ldr	r3, [r3, #0]
@@ -1138,12 +1138,12 @@ void fsmSetting() {
             		}
             	}
 
-            	if (isButtonPressed(2)) {
+            	if (isButtonPressed(2) == 1) {
  80008a0:	2002      	movs	r0, #2
  80008a2:	f7ff fc53 	bl	800014c <isButtonPressed>
  80008a6:	4603      	mov	r3, r0
- 80008a8:	2b00      	cmp	r3, #0
- 80008aa:	d019      	beq.n	80008e0 <fsmSetting+0x1e4>
+ 80008a8:	2b01      	cmp	r3, #1
+ 80008aa:	d119      	bne.n	80008e0 <fsmSetting+0x1e4>
             		greenDuration += greenIncreaseValue;
  80008ac:	4b1c      	ldr	r3, [pc, #112]	; (8000920 <fsmSetting+0x224>)
  80008ae:	681a      	ldr	r2, [r3, #0]
@@ -1227,12 +1227,12 @@ int greenDuration = 3000;    // Default 3 seconds
 void getMode() {
  8000938:	b580      	push	{r7, lr}
  800093a:	af00      	add	r7, sp, #0
-	if (isButtonPressed(0)) {
+	if (isButtonPressed(0) == 1) {
  800093c:	2000      	movs	r0, #0
  800093e:	f7ff fc05 	bl	800014c <isButtonPressed>
  8000942:	4603      	mov	r3, r0
- 8000944:	2b00      	cmp	r3, #0
- 8000946:	d030      	beq.n	80009aa <getMode+0x72>
+ 8000944:	2b01      	cmp	r3, #1
+ 8000946:	d130      	bne.n	80009aa <getMode+0x72>
 		trafficLightINIT();
  8000948:	f000 fa50 	bl	8000dec <trafficLightINIT>
 	    mode++;

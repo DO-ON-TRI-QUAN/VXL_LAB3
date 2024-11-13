@@ -22,7 +22,7 @@ int yellowDuration = 2000;   // Default 2 seconds
 int greenDuration = 3000;    // Default 3 seconds
 
 void getMode() {
-	if (isButtonPressed(0)) {
+	if (isButtonPressed(0) == 1) {
 		trafficLightINIT();
 	    mode++;
 	    previousMode = (mode - 1) % 4;
