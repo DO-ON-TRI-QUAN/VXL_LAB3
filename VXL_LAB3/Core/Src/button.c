@@ -17,7 +17,7 @@ void buttonINIT() {
     	KeyReg1[i] = NORMAL_STATE;
     	KeyReg2[i] = NORMAL_STATE;
     	KeyReg3[i] = NORMAL_STATE;
-    	TimeOutForKeyPress[i] = 200;
+    	TimeOutForKeyPress[i] = 100;
     	button_flag[i] = 0;
     	button_longPress_flag[i] = 0;
     }
@@ -59,16 +59,14 @@ void getKeyInput() {
 
 	            if (KeyReg3[i] == PRESSED_STATE) {
 	    	        button_flag[i] = 1;
-	    	        TimeOutForKeyPress[i] = 200;
+	    	        TimeOutForKeyPress[i] = 100;
 	            }
 
 	        } else {
 	    	    TimeOutForKeyPress[i]--;
 	            if (TimeOutForKeyPress[i] == 0) {
-	        	    TimeOutForKeyPress[i] = 200;
-	        	    if (KeyReg3[i] == PRESSED_STATE) {
-	    			    button_longPress_flag[i] = 1;
-	        	    }
+	        	    TimeOutForKeyPress[i] = 100;
+	        	    KeyReg3[i] = NORMAL_STATE;
 	            }
 	        }
 	    }
