@@ -23,6 +23,7 @@ void fsmSetting() {
             case 2:
             	RedBlinky();
 
+            	// Increase red value everytime button 1 is pressed
             	if (isButtonPressed(1)) {
             		redIncreaseValue = redIncreaseValue + 1000;
             		if (redIncreaseValue + redDuration > 99000) {
@@ -30,6 +31,7 @@ void fsmSetting() {
             		}
             	}
 
+            	// Update new red value if button 2 is pressed
             	if (isButtonPressed(2)) {
             		redDuration = redDuration + redIncreaseValue;
             		greenDuration = redDuration - yellowDuration; // Increases green when red increases
@@ -40,7 +42,7 @@ void fsmSetting() {
             		redIncreaseValue = 0;
             	}
 
-            	// Display updated red duration on the 7-segment display
+            	// Display current red duration and mode on the 7-segment display
             	SEGvalue1 = (redDuration + redIncreaseValue) / 1000;
             	SEGvalue2 = mode;
 
