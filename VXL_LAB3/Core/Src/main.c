@@ -29,6 +29,7 @@
 #include "fsm_auto.h"
 #include "fsm_setting.h"
 #include "display_traffic7seg.h"
+#include "scheduler.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -102,14 +103,24 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   setTimer(3, 500); // For 7seg display
   setTimer(4, 500); // For mode 2, 3 and 4
+
+  SCH_Init();
+  SCH_Add_Task(getMode, 0, 1);
+  SCH_Add_Task(fsmAuto, 1, 1);
+  SCH_Add_Task(fsmSetting, 2, 1);
+
+
   while (1)
   {
 
-   getMode();
+   SCH_Dispatch_Task();
 
-   fsmAuto();
 
-   fsmSetting();
+   //getMode();
+
+   //fsmAuto();
+
+   //fsmSetting();
 
     }
     /* USER CODE END WHILE */
@@ -255,6 +266,7 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 
 void HAL_TIM_PeriodElapsedCallback (TIM_HandleTypeDef *htim) {
+	SCH_Update();
 	timer_run();
 	getKeyInput();
 }
