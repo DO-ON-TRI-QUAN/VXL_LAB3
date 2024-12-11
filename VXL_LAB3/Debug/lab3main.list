@@ -1788,12 +1788,12 @@ void SCH_Init(void) {
 
 08000c54 <SCH_Update>:
 
-// Update the scheduler (called in the ISR)
+// Update the scheduler
 void SCH_Update(void) {
  8000c54:	b580      	push	{r7, lr}
  8000c56:	b082      	sub	sp, #8
  8000c58:	af00      	add	r7, sp, #0
-    SCH_GlobalTick++;  // Increment the global tick (called in ISR)
+    SCH_GlobalTick++;  // Increment the global tick
  8000c5a:	4b16      	ldr	r3, [pc, #88]	; (8000cb4 <SCH_Update+0x60>)
  8000c5c:	681b      	ldr	r3, [r3, #0]
  8000c5e:	3301      	adds	r3, #1
@@ -1868,7 +1868,7 @@ void SCH_Update(void) {
 
 08000cbc <SCH_Dispatch_Task>:
 
-// Dispatch (run) the next task from the task list
+// Dispatch the next task from the task list
 void SCH_Dispatch_Task(void) {
  8000cbc:	b580      	push	{r7, lr}
  8000cbe:	b082      	sub	sp, #8
@@ -2020,7 +2020,7 @@ unsigned char SCH_Add_Task(void (*pFunction)(), unsigned int DELAY, unsigned int
  8000d86:	2200      	movs	r2, #0
  8000d88:	60da      	str	r2, [r3, #12]
 
-    // Insert the new task into the task list while maintaining order
+    // Insert the new task into the task list
     if (SCH_TaskList == NULL || SCH_TaskList->nextRunTime > newTask->nextRunTime) {
  8000d8a:	4b19      	ldr	r3, [pc, #100]	; (8000df0 <SCH_Add_Task+0xa4>)
  8000d8c:	681b      	ldr	r3, [r3, #0]

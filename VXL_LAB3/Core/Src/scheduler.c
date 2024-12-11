@@ -208,9 +208,9 @@ void SCH_Init(void) {
     SCH_TaskList = NULL; // Initialize the task list as empty
 }
 
-// Update the scheduler (called in the ISR)
+// Update the scheduler
 void SCH_Update(void) {
-    SCH_GlobalTick++;  // Increment the global tick (called in ISR)
+    SCH_GlobalTick++;  // Increment the global tick
 
     // Check if there are any tasks in the task list
     if (SCH_TaskList == NULL) {
@@ -236,7 +236,7 @@ void SCH_Update(void) {
     }
 }
 
-// Dispatch (run) the next task from the task list
+// Dispatch the next task from the task list
 void SCH_Dispatch_Task(void) {
     Task* currentTask = SCH_TaskList;
     unsigned char taskIndex = 0;
@@ -288,7 +288,7 @@ unsigned char SCH_Add_Task(void (*pFunction)(), unsigned int DELAY, unsigned int
     newTask->period = PERIOD;
     newTask->next = NULL;
 
-    // Insert the new task into the task list while maintaining order
+    // Insert the new task into the task list
     if (SCH_TaskList == NULL || SCH_TaskList->nextRunTime > newTask->nextRunTime) {
         // Insert at the head if the list is empty or new task is due earlier
         newTask->next = SCH_TaskList;
